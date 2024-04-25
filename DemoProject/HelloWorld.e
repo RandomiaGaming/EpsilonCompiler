@@ -1,26 +1,14 @@
-#include system.e
+Types of types:
+Person is a type denoting an instance of the Person class in the default format specified by the Person class definition.
+Person* is a type denoting an unmanaged pointer to either null or an instance of the Person class on the heap.
+Person^ is a type denoting a managed pointer to either null or an instance of the Person class on the heap.
+Person$ is a type denoting an instance of the Person class on the stack.
 
-void Main() {
-    printLn("Hello World!");
-}
+Class Type Of Type Hinting:
+class Person { } is the same as pointalloc class Person { }
+pointalloc class Person { } is a class definition for Person where person may only be a pointer never a stack instance.
+stackalloc class Person { } is a class definition for Person where person may be allocated only two the stack never as a pointer.
+dynamalloc class Person { } is a class definition for Person where person may be allocated anywhere stack or heap.
 
-/*
-#include system.e
-This line tells the compiler to look for a file called system.e.
-When searching for system.e the compiler will first check the current directory recursively.
-Next the compiler will check the standard lib folder recursively.
-Finally the compiler will check the standard packages folder recursively.
-Note if you don't want the compiler to check in the lib or standard packages folders you can specify my code only with the following.
-#include("system.e", IncludeFlags.NoSubDirs | IncludeFlags.MyCodeOnly);
-This will tell the compiler to look for system.e only in the current directory and nowhere else.
+delete frees a block of memory including classes, value types, arrays of classes, and arrays of value types too. Because delete should just work on all unmanaged pointers.
 
-void Main() { }
-This defines a function called Main which returns nothing and is public.
-Note that the program selects Main as its entry point because there is no entry directive to specify otherwise.
-To specify a custom entry function you could use the following.
-#entry OtherMain
-If no custom entry is defined the compiler searches for a function named "Main" and then "main" before giving up.
-
-Note that there is no such thing as a call stack in e because recursion is strictly prohibited.
-
-*/
